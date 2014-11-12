@@ -31,8 +31,6 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 RUN apt-get update &&\
     apt-get upgrade -y -q &&\
     apt-get dist-upgrade -y -q &&\
-    apt-get -y -q autoclean &&\
-    apt-get -y -q autoremove &&\
     apt-get install --force-yes -y -q ruby2.0 ruby2.0-dev libruby2.0 &&\
     rm /usr/bin/ruby /usr/bin/gem /usr/bin/irb /usr/bin/rdoc /usr/bin/erb &&\
     ln -s /usr/bin/ruby2.0 /usr/bin/ruby &&\
@@ -43,5 +41,7 @@ RUN apt-get update &&\
     gem update --system &&\
     gem pristine --all &&\
     apt-get clean &&\
+    apt-get -y -q autoclean &&\
+    apt-get -y -q autoremove &&\
     rm -rf /var/lib/apt/lists/* &&\
     rm -rf /tmp/* 

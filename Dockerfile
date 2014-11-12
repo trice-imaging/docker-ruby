@@ -43,4 +43,5 @@ RUN apt-get update &&\
     gem update --system &&\
     gem pristine --all &&\
     apt-get clean &&\
-    rm -rf /tmp/*
+    rm -rf /var/lib/apt/lists/* &&\
+    rm -rf /tmp/* 

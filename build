@@ -1,3 +1,7 @@
 #!/bin/bash
 
-docker build -t quay.io/trice/ruby .
+export GIT_BRANCH=$(git symbolic-ref --short HEAD)
+export DOCKER_IMAGE=quay.io/trice/ruby
+export DOCKER_TAG=$(echo -n $GIT_BRANCH | sed 's/\//_/g')
+
+docker build -t $DOCKER_IMAGE:$DOCKER_TAG .
